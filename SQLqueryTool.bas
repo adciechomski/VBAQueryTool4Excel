@@ -1,7 +1,7 @@
 Attribute VB_Name = "SQLqueryTool"
 Public row2$
 Public rs As New ADODB.Recordset
-Public load_list$, parameter$, sqlText$
+Public loadList$, parameter$, sqlText$
 '------------------------------------------ START --------------------------------
 Sub Beginning()
 LoginForm.ComboBox1.AddItem "NORTHWND"
@@ -24,19 +24,17 @@ myPAth = ""
     Cells.ClearContents
 Unload LoginForm  '---------------- DISABLE LOGIN FORM
 
-'GoTo gg
+
 sqlText = ""
 Dim hnd As Integer
 hnd = FreeFile
 myPAth = File_Loader
 If myPAth = "" Then
-'Unload LoginForm
 MsgBox "No file selected"
 GoTo end_sub
 End If
 
 'Open myPAth For Input As hnd
-'gg:
 Set conObj = New ConnectionClass
 conObj.LETpassword = pwd
 conObj.LETserverName = serverName
@@ -183,7 +181,7 @@ Sub LETparameter(value As String)
 parameter = value
 End Sub
 Function get_list(list_string As String, ByRef conObj)
-Dim arr_list() As Variant
+Dim arrList() As Variant
 Dim connectionObject As ADODB.connection
     
 Set connectionObject = conObj.GetConnectionObject
@@ -191,7 +189,7 @@ rs.Open list_string, connectionObject, adOpenDynamic, adLockReadOnly
 If rs.RecordCount < Rows.Count Then
     'ActiveSheet.Range("A2").CopyFromRecordset RS
     rs.MoveFirst
-    arr_list = rs.GetRows
+    arrList = rs.GetRows
 Else
     Do While Not rs.EOF
         row = row + 1
@@ -207,17 +205,17 @@ End If
 rs.Close
 
 Set rs = Nothing
-For I = LBound(arr_list, 2) To UBound(arr_list, 2)
-        ParamSelectList.ListBox1.AddItem arr_list(0, I)
+For I = LBound(arrList, 2) To UBound(arrList, 2)
+        ParamSelectList.ListBox1.AddItem arrList(0, I)
 Next I
 ParamSelectList.Label1.Caption = "rs.Fields.Item(0).Name"
-load_list = ""
+loadList = ""
 ParamSelectList.Show
-get_list = Mid(load_list, 3)
+get_list = Mid(loadList, 3)
 End Function
-Sub load_string_list()
+Sub loadStringList()
 For I = 0 To ParamSelectList.ListBox2.ListCount - 1
-    load_list = load_list & ", " & "'" & ParamSelectList.ListBox2.List(I) & "'"
+    loadList = loadList & ", " & "'" & ParamSelectList.ListBox2.List(I) & "'"
 Next I
 End Sub
 

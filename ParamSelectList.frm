@@ -25,13 +25,9 @@ I = I + 1
 Loop
 End Sub
 Private Sub CommandButton1_Click()
-Call load_string_list
+Call loadStringList
 Unload Me
 End Sub
-
-'Private Sub Add_Click()
- '   Call Deal_list_Input
-'End Sub
 
 Private Sub Add_param_Click()
 Do Until I > ListBox1.ListCount - 1
@@ -45,9 +41,7 @@ Loop
 
 End Sub
 
-
 Private Sub userform_terminate() '----------- X terminate and after display terminate
-    'Application.Visible = True
-    'Call Terminate_form
+
 End Sub
 

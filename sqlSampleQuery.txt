@@ -1,0 +1,9 @@
+  SELECT c.*, o.*
+  FROM NORTHWND.dbo.customers c
+  left join NORTHWND.dbo.Orders o on c.CustomerID = o.CustomerID
+  WHERE
+  1=1
+and c.City = 'O' --\\--
+and c.ContactName LIKE 'Maria' --\\--
+  AND c.Country in ('') --\\--list
+
