@@ -26,6 +26,7 @@ Loop
 End Sub
 Private Sub CommandButton1_Click()
 Call loadStringList
+Call loadListINNOTIN
 Unload Me
 End Sub
 

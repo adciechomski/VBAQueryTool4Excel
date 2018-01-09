@@ -14,5 +14,5 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub CommandButton1_Click()
-Call Data_query(Me.TextBox3, Me.ComboBox1, Me.TextBox4)
+Call Data_query(Me.TextBox3, Me.ComboBox1, Me.TextBox4, Me.TextBox2)
 End Sub
